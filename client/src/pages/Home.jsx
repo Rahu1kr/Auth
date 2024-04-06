@@ -17,7 +17,7 @@ const Home = () => {
             const { data } = await axios.post(
                 "https://auth-backend-9z6u.onrender.com",
                 {},
-                // { withCredentials: true }
+                { withCredentials: true }
             );
             const { status, user } = data;
             setUsername(user);
