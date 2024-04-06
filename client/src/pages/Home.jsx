@@ -15,7 +15,7 @@ const Home = () => {
                 navigate("/login");
             }
             const { data } = await axios.post(
-                `${baselink}`,
+                "https://auth-backend-9z6u.onrender.com",
                 {},
                 { withCredentials: true }
             );

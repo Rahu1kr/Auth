@@ -32,7 +32,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        `${baselink}/login`,
+        "https://auth-backend-9z6u.onrender.com/login",
         {
           ...inputValue,
         },
