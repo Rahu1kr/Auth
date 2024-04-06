@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { baselink } from "../link";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/signup",
+        `${baselink}/signup`,
         {
           ...inputValue,
         },
@@ -58,10 +59,10 @@ const Signup = () => {
   };
 
   return (
-    <div class="card">
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="card-inner">
+    <div className="card">
+      <div className="circle"></div>
+      <div className="circle"></div>
+      <div className="card-inner">
         <div className="form_container">
           <h2>Signup Account</h2>
           <form onSubmit={handleSubmit}>

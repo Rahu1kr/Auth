@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
+import { baselink } from '../link'
 
 const Home = () => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Home = () => {
                 navigate("/login");
             }
             const { data } = await axios.post(
-                "http://localhost:8000",
+                `${baselink}`,
                 {},
                 { withCredentials: true }
             );
