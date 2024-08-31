@@ -10,7 +10,7 @@ export const connectDB = async () => {
         console.error("Failed to connect!", error)
         process.exit(0);
     }
-};
+}; 
 
 // export const connectDB = async () => {
 //   try {
