@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
-import { baselink } from '../link'
+
 
 const Home = () => {
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Home = () => {
                 navigate("/login");
             }
             const { data } = await axios.post(
-                "https://auth-backend-9z6u.onrender.com",
+                import.meta.env.VITE_PUBLIC_BACKEND_URL,
                 {},
                 { withCredentials: true }
             );
