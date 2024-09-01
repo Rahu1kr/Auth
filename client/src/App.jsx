@@ -1,14 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import { Login, Signup } from "./pages";
-import Home from "./pages/Home";
-
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
+import Home from "./pages/Home.jsx";
+import { Navigate } from "react-router-dom";
 
 function App() {
 
   return (
     <div className="App">
      <Routes>
-      <Route path="/" element={<Home/>} />
+     <Route path="/" element={<Navigate to={'/login'}/>} />
+      <Route path="/home" element={<Home/>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/signup" element={<Signup/>} />
      </Routes>

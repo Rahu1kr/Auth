@@ -1,31 +1,24 @@
-import express from "express";
-import dotenv from 'dotenv';
-import cors from 'cors';
-import cookieParser from "cookie-parser";
-import { connectDB } from './utils/db.js';
-import authRoute from './routes/AuthRoute.js';
-
-dotenv.config();
-
+const express = require('express');
 const app = express();
-app.use(express.json());
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const AuthRouter = require('./Routes/AuthRouter');
+const ProductRouter = require('./Routes/ProductRouter');
 
-const corsOrigin = {
-    origin: [process.env.FRONTEND_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-}
+require('dotenv').config();
+require('./Models/db');
+const PORT = process.env.PORT || 8080;
 
-app.use(cors(corsOrigin));
-
-const PORT = process.env.PORT || 3000;
-
-connectDB().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server is running at port: ${PORT}`)
-    });
+app.get('/ping', (req, res) => {
+    res.send('PONG');
 });
 
+app.use(bodyParser.json());
+app.use(cors());
+app.use('/auth', AuthRouter);
+app.use('/products', ProductRouter);
 
-app.use(cookieParser());
-app.use('/', authRoute)
+
+app.listen(PORT, () => {
+    console.log(`Server is running on ${PORT}`)
+})
